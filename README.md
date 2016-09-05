@@ -1,6 +1,6 @@
 # Memcached SASL extension for Laravel5
 
-forked from ripples-alive/Memcached-sasl
+forked from [ripples-alive/Memcached-sasl](https://github.com/ripples-alive/Memcached-sasl)
 
 PHP长连接memcached, lumen可用
 参考 [阿里云官方文档](https://help.aliyun.com/document_detail/26554.html), [laravel-memcached-plus](https://github.com/b3it/laravel-memcached-plus) 做了一些修改.
