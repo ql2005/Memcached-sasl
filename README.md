@@ -1,5 +1,11 @@
 # Memcached SASL extension for Laravel5
 
+forked from ripples-alive/Memcached-sasl
+
+PHP长连接memcached, lumen可用
+参考 [阿里云官方文档](https://help.aliyun.com/document_detail/26554.html), [laravel-memcached-plus](https://github.com/b3it/laravel-memcached-plus) 做了一些修改.
+尚未提交 composer
+
 This is a custom cache extension of memcached sasl for laravel5, especially for aliyun ocs.
 
 ## Installation
@@ -28,6 +34,14 @@ return [
     'stores' => [
         'memcached_sasl' => [
             'driver' => 'memcached_sasl',
+            'persistent_id' => env('MEMCACHED_PERSISTENT', 'lumen'),
+            'options'    => [
+                Memcached::OPT_NO_BLOCK         => true,
+                Memcached::OPT_AUTO_EJECT_HOSTS => true,
+                Memcached::OPT_CONNECT_TIMEOUT  => 2000,
+                Memcached::OPT_POLL_TIMEOUT     => 2000,
+                Memcached::OPT_RETRY_TIMEOUT    => 2,
+            ],
             'servers' => [
                 [
                     'host' => env('MEMCACHED_HOST', '127.0.0.1'),

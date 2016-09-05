@@ -17,7 +17,12 @@ class MemcachedSaslServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app['cache']->extend('memcached_sasl', function ($app, $config) {
-            $memcached = $app['memcached_sasl.connector']->connect($config['servers'], $config['auth']);
+            $memcached = $app['memcached_sasl.connector']->connect(
+                $config['servers'],
+                $config['persistent_id'],
+                $config['options'],
+                $config['auth']
+            );
 
             $prefix = $app['config']['cache.prefix'];
             $store = new \Illuminate\Cache\MemcachedStore($memcached, $prefix);
