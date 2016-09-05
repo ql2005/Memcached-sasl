@@ -42,7 +42,7 @@ class MemcachedSaslConnector
                 $memcached->setOptions($options);
             }
 
-            if (count($auth) == 2) {
+            if (!empty($auth['username'])) {
                 $this->setAuth($memcached, $auth);
             }
 
